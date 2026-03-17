@@ -16,7 +16,7 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/build/linux/x64/release/bundle"
+  cd "$srcdir/$pkgname-$pkgver/build/linux/x64/release/bundle"git tag v1.0.0
 
   # Install to /opt
   install -dm755 "$pkgdir/opt/$pkgname"
