@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://github.com/JappeOS/jappeos_terminal"
 license=('GPL-3.0')
 depends=('glibc' 'gtk3')
-makedepends=('flutter' 'git')
+makedepends=('git' 'clang' 'cmake' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/JappeOS/jappeos_terminal/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
