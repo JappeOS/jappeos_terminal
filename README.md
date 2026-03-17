@@ -48,7 +48,7 @@ $ flutter doctor
 
 Clone the repository and fetch dependencies:
 ```bash
-$ git clone https://github.com/JappeOS/jappeos_terminal.git
+$ git clone https://github.com/JappeOS/jappeos_terminal.git 
 $ cd jappeos_terminal
 $ flutter pub get
 ```
