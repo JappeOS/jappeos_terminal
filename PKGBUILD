@@ -1,4 +1,4 @@
-pkgname=jappeos-terminal
+pkgname=jappeos_terminal
 pkgver=1.0.0
 pkgrel=1
 pkgdesc="A terminal emulator for JappeOS, built with Flutter."
@@ -10,13 +10,17 @@ makedepends=('git' 'clang' 'cmake' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/JappeOS/jappeos_terminal/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
+prepare() {
+    mv "$srcdir/jappeos_terminal-v$pkgver" "$srcdir/$pkgname-$pkgver"
+}
+
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   flutter build linux --release
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/build/linux/x64/release/bundle"git tag v1.0.0
+  cd "$srcdir/$pkgname-$pkgver/build/linux/x64/release/bundle"
 
   # Install to /opt
   install -dm755 "$pkgdir/opt/$pkgname"
