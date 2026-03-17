@@ -1,0 +1,30 @@
+name: jappeos_terminal
+description: "A terminal emulator for JappeOS, built with Flutter."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.0-150.0.dev
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  flutter_pty: ^0.4.2
+  shadcn_flutter:
+    git:
+      url: https://github.com/JappeOS/shadcn_flutter.git
+      ref: master
+  xterm: ^4.0.0
+  yaru_window: ^0.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+flutter:
+
+  uses-material-design: true
