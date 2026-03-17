@@ -11,7 +11,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/JappeOS/jappeos_terminal/ar
 sha256sums=('SKIP')
 
 prepare() {
-    mv "$srcdir/jappeos_terminal-v$pkgver" "$srcdir/$pkgname-$pkgver"
+  # GitHub strips 'v' automatically; rename just in case
+  if [ -d "$srcdir/jappeos_terminal-$pkgver" ]; then
+    mv "$srcdir/jappeos_terminal-$pkgver" "$srcdir/$pkgname-$pkgver"
+  fi
 }
 
 build() {
