@@ -27,6 +27,6 @@ package() {
   ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   # Install desktop entry
-  install -Dm644 jappeos-terminal.desktop \
-  "$pkgdir/usr/share/applications/jappeos-terminal.desktop"
+  install -Dm644 "$srcdir/$pkgname-$pkgver/jappeos-terminal.desktop" \
+    "$pkgdir/usr/share/applications/jappeos-terminal.desktop"
 }
