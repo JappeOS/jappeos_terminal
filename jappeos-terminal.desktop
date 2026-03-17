@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Terminal
+Comment=Use the command line
+Keywords=shell;prompt;command;commandline;cmd;
+Exec=/opt/jappeos-terminal/jappeos-terminal
+Icon=utilities-terminal
+Type=Application
+Categories=System;Utility;TerminalEmulator;
+StartupNotify=true
+StartupWMClass=jappeos-terminal

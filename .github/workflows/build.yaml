@@ -1,0 +1,13 @@
+name: Build
+
+on:
+  push:
+    branches: [ "dev" ]
+
+jobs:
+  build:
+    uses: JappeOS/jappeos-workflows/.github/workflows/build-package.yml@main
+    with:
+      package-name: jappeos-terminal
+      flutter: true
+    secrets: inherit
