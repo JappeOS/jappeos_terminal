@@ -27,7 +27,7 @@ class App extends StatelessWidget {
       title: 'Terminal',
       theme: _getTheme(false),
       darkTheme: _getTheme(true),
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
       home: const MainPageTabbed(title: 'Terminal'),
     );
