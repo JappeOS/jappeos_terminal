@@ -8,11 +8,14 @@ name: Build (testing)
 #      - "*.md"
 #  workflow_dispatch:
 
+#on:
+#  push:
+#    tags:
+#      - "testing-v*"
+#  workflow_dispatch:
+
 on:
-  push:
-    tags:
-      - "testing-v*"
-  workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read

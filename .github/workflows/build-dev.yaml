@@ -9,11 +9,14 @@ name: Build (dev)
 #      - "*.md"
 #  workflow_dispatch:
 
+#on:
+#  push:
+#    tags:
+#      - "dev-v*"
+#  workflow_dispatch:
+
 on:
-  push:
-    tags:
-      - "dev-v*"
-  workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read

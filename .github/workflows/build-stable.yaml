@@ -8,11 +8,14 @@ name: Build (stable)
 #      - "*.md"
 #  workflow_dispatch:
 
+#on:
+#  push:
+#    tags:
+#      - "stable-v*"
+#  workflow_dispatch:
+
 on:
-  push:
-    tags:
-      - "stable-v*"
-  workflow_dispatch:
+  workflow_call:
 
 permissions:
   contents: read

@@ -13,3 +13,10 @@ jobs:
   release:
     uses: JappeOS/jappeos-workflows/.github/workflows/release-flutter.yml@main
     secrets: inherit
+  build:
+    needs: sync-and-tag
+    uses: JappeOS/jappeos-workflows/.github/workflows/build-package.yml@main
+    with:
+      package-name: jappeos-terminal
+      flutter: true
+    secrets: inherit
