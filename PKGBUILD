@@ -1,5 +1,5 @@
 pkgname=jappeos_terminal
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=2
 pkgdesc="A terminal emulator for JappeOS, built with Flutter."
 arch=('x86_64')
