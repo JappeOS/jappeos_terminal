@@ -1,0 +1,25 @@
+name: Build (dev)
+
+#on:
+#  push:
+#    branches: ["dev"]
+#    paths-ignore:
+#      - "PKGBUILD"
+#      - ".github/**"
+#      - "*.md"
+#  workflow_dispatch:
+
+on:
+  push:
+    tags:
+      - "dev-v*"
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: JappeOS/jappeos-workflows/.github/workflows/build-package.yml@main
+    with:
+      package-name: jappeos-terminal
+      flutter: true
+      channel: dev
+    secrets: inherit

@@ -1,12 +1,17 @@
-name: Build
+name: Build (stable)
+
+#on:
+#  push:
+#    branches: ["stable"]
+#    paths-ignore:
+#      - ".github/**"
+#      - "*.md"
+#  workflow_dispatch:
 
 on:
-#  push:
-#    tags: ["v*"]
-  workflow_run:
-    workflows: ["Release"]
-    types:
-      - completed
+  push:
+    tags:
+      - "stable-v*"
   workflow_dispatch:
 
 jobs:
@@ -15,4 +20,5 @@ jobs:
     with:
       package-name: jappeos-terminal
       flutter: true
+      channel: stable
     secrets: inherit

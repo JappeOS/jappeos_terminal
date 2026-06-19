@@ -1,0 +1,24 @@
+name: Build (testing)
+
+#on:
+#  push:
+#    branches: ["testing"]
+#    paths-ignore:
+#      - ".github/**"
+#      - "*.md"
+#  workflow_dispatch:
+
+on:
+  push:
+    tags:
+      - "testing-v*"
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: JappeOS/jappeos-workflows/.github/workflows/build-package.yml@main
+    with:
+      package-name: jappeos-terminal
+      flutter: true
+      channel: testing
+    secrets: inherit

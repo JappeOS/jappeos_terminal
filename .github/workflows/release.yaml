@@ -2,7 +2,7 @@ name: Release
 
 on:
   push:
-    branches: ["dev"]
+    branches: ["dev", "testing", "stable"]
     paths:
       - "pubspec.yaml"
 
@@ -10,60 +10,6 @@ permissions:
   contents: write
 
 jobs:
-  sync-and-tag:
-    name: Sync PKGBUILD and create release tag
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.JAPPEOS_ORG_PAT || secrets.GITHUB_TOKEN }}
-
-      - name: Extract version from pubspec.yaml
-        id: version
-        run: |
-          # Strips the Flutter build number (e.g. "1.0.3+1" → "1.0.3")
-          VERSION=$(grep '^version:' pubspec.yaml \
-            | sed 's/version:[[:space:]]*//' \
-            | sed 's/+.*//' \
-            | tr -d '[:space:]')
-          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
-          echo "Detected version: $VERSION"
-
-      - name: Check if tag already exists
-        id: tag_check
-        run: |
-          TAG="v${{ steps.version.outputs.version }}"
-          if git ls-remote --tags origin "refs/tags/$TAG" | grep -q .; then
-            echo "exists=true"  >> "$GITHUB_OUTPUT"
-            echo "::notice::Tag $TAG already exists — nothing to do."
-          else
-            echo "exists=false" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Update PKGBUILD
-        if: steps.tag_check.outputs.exists == 'false'
-        run: |
-          VERSION="${{ steps.version.outputs.version }}"
-          # Update pkgver; reset pkgrel to 1 for a clean new upstream version
-          sed -i "s/^pkgver=.*/pkgver=$VERSION/" PKGBUILD
-          sed -i "s/^pkgrel=.*/pkgrel=1/"        PKGBUILD
-
-      - name: Commit updated PKGBUILD
-        if: steps.tag_check.outputs.exists == 'false'
-        run: |
-          VERSION="${{ steps.version.outputs.version }}"
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add PKGBUILD
-          # [skip ci] is a safety net in case paths filtering ever changes
-          git commit -m "chore: sync PKGBUILD to v$VERSION [skip ci]"
-          git push origin HEAD:dev
-
-      - name: Create and push version tag
-        if: steps.tag_check.outputs.exists == 'false'
-        run: |
-          VERSION="${{ steps.version.outputs.version }}"
-          git tag -a "v$VERSION" -m "Release v$VERSION"
-          git push origin "v$VERSION"
+  release:
+    uses: JappeOS/jappeos-workflows/.github/workflows/release-flutter.yml@main
+    secrets: inherit
