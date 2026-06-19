@@ -14,6 +14,9 @@ on:
       - "testing-v*"
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   build:
     uses: JappeOS/jappeos-workflows/.github/workflows/build-package.yml@main
