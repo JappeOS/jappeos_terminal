@@ -1,5 +1,6 @@
 pkgname=jappeos_terminal
-pkgver=dev-v1.0.11
+pkgver=1.0.11
+_tag=dev-v1.0.11
 pkgrel=1
 pkgdesc="A terminal emulator for JappeOS, built with Flutter."
 arch=('x86_64')
@@ -7,7 +8,7 @@ url="https://github.com/JappeOS/jappeos_terminal"
 license=('GPL-3.0')
 depends=('glibc' 'gtk3')
 makedepends=('git' 'clang' 'cmake' 'ninja')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/JappeOS/jappeos_terminal/archive/refs/tags/$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/JappeOS/jappeos_terminal/archive/refs/tags/$_tag.tar.gz")
 sha256sums=('SKIP')
 
 build() {
