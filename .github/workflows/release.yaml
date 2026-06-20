@@ -19,5 +19,6 @@ jobs:
     with:
       package-name: jappeos-terminal
       flutter: true
+      channel: ${{ github.ref_name }}
       commit-sha: ${{ needs.release.outputs.commit-sha }}
     secrets: inherit
