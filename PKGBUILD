@@ -1,7 +1,7 @@
 pkgname=jappeos_terminal
 pkgver=1.0.14
 _tag=dev-v1.0.14
-pkgrel=1
+pkgrel=2
 pkgdesc="A terminal emulator for JappeOS, built with Flutter."
 arch=('x86_64')
 url="https://github.com/JappeOS/jappeos_terminal"
@@ -12,12 +12,12 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/JappeOS/jappeos_terminal/ar
 sha256sums=('SKIP')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$_tag"
   flutter build linux --release
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/build/linux/x64/release/bundle"
+  cd "$srcdir/$pkgname-$_tag/build/linux/x64/release/bundle"
 
   # Install to /opt
   install -dm755 "$pkgdir/opt/$pkgname"
@@ -28,6 +28,6 @@ package() {
   ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/$pkgname"
 
   # Install desktop entry
-  install -Dm644 "$srcdir/$pkgname-$pkgver/jappeos-terminal.desktop" \
+  install -Dm644 "$srcdir/$pkgname-$_tag/jappeos-terminal.desktop" \
     "$pkgdir/usr/share/applications/jappeos-terminal.desktop"
 }
