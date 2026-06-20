@@ -2,7 +2,7 @@ name: jappeos_terminal
 description: "A terminal emulator for JappeOS, built with Flutter."
 publish_to: 'none'
 
-version: 1.0.14
+version: 1.0.15
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
